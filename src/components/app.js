@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { connect } from "react-redux";
 
 import "../style/app.css";
+import { flipCard } from "../actions/index";
 
 class App extends Component {
-  state = true;
-
   onTouchStart() {
-    this.setState(false);
+    this.props.flipCard();
+    this.onTouchStart.bind(this);
   }
 
   render() {
-    const extraClass = this.state ? "" : "hover";
+    const extraClass = this.props.flipped ? "" : "hover";
     return (
       <div
         className={"flip-container " + extraClass}
@@ -27,4 +26,12 @@ class App extends Component {
     );
   }
 }
-export default App;
+
+function mapStateToProps(state) {
+  return { flipped: state.flipped };
+}
+
+export default connect(
+  mapStateToProps,
+  { flipCard }
+)(App);
