@@ -1,6 +1,7 @@
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
+  margin-top: 50px !important;
 }
 /* flip the pane when hovered */
 .flip-container:hover .flipper,
@@ -14,6 +15,7 @@
   width: 400px;
   height: 280px;
   margin: 0 auto;
+  vertical-align: middle;
 }
 
 /* flip speed goes here */

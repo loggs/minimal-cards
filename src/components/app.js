@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+
+import "../../style/app.css";
 
 class App extends Component {
   state = true;
@@ -24,5 +27,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
