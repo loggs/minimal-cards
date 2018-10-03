@@ -5,15 +5,14 @@ import CardBack from "./card-back";
 import { flipCard } from "../../actions/index";
 
 class Card extends Component {
-  onDivClick = () => {
-    console.log(this.props.flipped);
-    this.props.flipCard();
-  };
-
   render() {
-    const extraClass = this.props.flipped ? "hover" : "";
+    const { uniqueId, data, flipCard } = this.props;
+    const extraClass = data.flipped ? "hover" : "";
     return (
-      <div className={"flip-container " + extraClass} onClick={this.onDivClick}>
+      <div
+        className={"flip-container " + extraClass}
+        onClick={() => flipCard(uniqueId)}
+      >
         <div className="flipper">
           <CardFront />
           <CardBack />
@@ -23,11 +22,7 @@ class Card extends Component {
   }
 }
 
-function mapStateToProps({ flipped }) {
-  return { flipped };
-}
-
 export default connect(
-  mapStateToProps,
+  null,
   { flipCard }
 )(Card);
