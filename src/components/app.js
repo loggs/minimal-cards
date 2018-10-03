@@ -1,23 +1,19 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 
 import "../style/app.css";
 import { flipCard } from "../actions/index";
 
 class App extends Component {
-  onTouchStart() {
+  onDivClick = () => {
+    console.log(this.props.flipped);
     this.props.flipCard();
-    this.onTouchStart.bind(this);
-  }
+  };
 
   render() {
-    const extraClass = this.props.flipped ? "" : "hover";
+    const extraClass = this.props.flipped ? "hover" : "";
     return (
-      <div
-        className={"flip-container " + extraClass}
-        onTouchStart={this.onTouchStart}
-      >
+      <div className={"flip-container " + extraClass} onClick={this.onDivClick}>
         <div className="flipper">
           <div className="front">Front!</div>
           <div className="back">Back!</div>
@@ -27,8 +23,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { flipped: state.flipped };
+function mapStateToProps({ flipped }) {
+  return { flipped };
 }
 
 export default connect(
