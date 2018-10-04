@@ -1,8 +1,12 @@
+button:focus {
+  outline: 0;
+}
+
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
-  margin-top: 50px !important;
 }
+
 /* flip the pane when hovered */
 /* .flip-container:hover .flipper, */
 .flip-container.hover .flipper {
@@ -16,13 +20,25 @@
   height: 280px;
   margin: 0 auto;
   vertical-align: middle;
+  -webkit-animation: fadein 1s;
+  animation: fadein 1s;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+@keyframes fadein {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 280px;
+  }
 }
 
 /* flip speed goes here */
 .flipper {
   transition: 0.6s;
   transform-style: preserve-3d;
-
   position: relative;
 }
 
@@ -46,4 +62,21 @@
 /* back, initially hidden pane */
 .back {
   transform: rotateY(180deg);
+}
+
+.center {
+  text-align: center;
+}
+
+.add-card {
+  background-color: white;
+  width: 180px;
+  height: 50px;
+  padding: 0;
+  border-radius: 150px;
+}
+
+.add-card-text {
+  font-size: 40px;
+  transform: translateY(-10%);
 }

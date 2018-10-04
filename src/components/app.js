@@ -16,7 +16,11 @@ class App extends Component {
     return (
       <div>
         {this.renderCards()}
-        <button onClick={() => this.props.addCard()}>+</button>
+        <div className="center">
+          <button className="add-card" onClick={() => this.props.addCard()}>
+            <div className="add-card-text">+</div>
+          </button>
+        </div>
       </div>
     );
   }
