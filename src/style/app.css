@@ -5,6 +5,7 @@ button:focus {
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
+  position: relative;
 }
 
 /* flip the pane when hovered */
@@ -20,10 +21,11 @@ button:focus {
   height: 280px;
   margin: 0 auto;
   vertical-align: middle;
-  -webkit-animation: fadein 1s;
-  animation: fadein 1s;
+  -webkit-animation: fadein 1s normal ease-out;
+  animation: fadein 0.5s normal ease-out;
   margin-top: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  bottom: 0px;
 }
 
 @keyframes fadein {
@@ -66,6 +68,9 @@ button:focus {
 
 .center {
   text-align: center;
+  bottom: 20px;
+  position: fixed;
+  width: 100%;
 }
 
 .add-card {
