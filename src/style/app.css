@@ -2,6 +2,25 @@ button:focus {
   outline: 0;
 }
 
+/* Create menu button */
+div.menuButton {
+  left: 12px;
+  top: 8px;
+  position: fixed;
+  display: inline-block;
+  cursor: pointer;
+}
+
+div.menuBar1,
+div.menuBar2,
+div.menuBar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;

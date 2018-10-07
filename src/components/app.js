@@ -23,6 +23,11 @@ class App extends Component {
   render() {
     return (
       <div>
+        <div className="menuButton">
+          <div className="menuBar1" />
+          <div className="menuBar2" />
+          <div className="menuBar3" />
+        </div>
         {this.renderCards()}
         <div className="center">
           <button className="add-card" onClick={this.clickAddButton.bind(this)}>
