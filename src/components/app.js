@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { animateScroll } from "react-scroll";
 import Card from "./cards/card";
+import Menu from "./menu";
 import { addCard } from "../actions/index";
 import _ from "lodash";
 import "../style/app.css";
@@ -23,11 +24,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="menuButton">
-          <div className="menuBar1" />
-          <div className="menuBar2" />
-          <div className="menuBar3" />
-        </div>
+        <Menu />
         {this.renderCards()}
         <div className="center">
           <button className="add-card" onClick={this.clickAddButton.bind(this)}>

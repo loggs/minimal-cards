@@ -21,6 +21,19 @@ div.menuBar3 {
   transition: 0.4s;
 }
 
+.open .menuBar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.open .menuBar2 {
+  opacity: 0;
+}
+
+.open .menuBar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
