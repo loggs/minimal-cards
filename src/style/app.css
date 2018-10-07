@@ -5,7 +5,7 @@ button:focus {
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
-  position: relative;
+  transform: translateY(300px);
 }
 
 /* flip the pane when hovered */
@@ -20,12 +20,11 @@ button:focus {
   width: 400px;
   height: 280px;
   margin: 0 auto;
-  vertical-align: middle;
   -webkit-animation: fadein 1s normal ease-out;
   animation: fadein 0.5s normal ease-out;
   margin-top: 15px;
   margin-bottom: 15px;
-  bottom: 0px;
+  bottom: 70px;
 }
 
 @keyframes fadein {
@@ -58,12 +57,12 @@ button:focus {
 .front {
   z-index: 2;
   /* for firefox 31 */
-  transform: rotateY(0deg);
+  transform: rotateY(0deg) translateY(295px);
 }
 
 /* back, initially hidden pane */
 .back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateY(295px);
 }
 
 .center {
