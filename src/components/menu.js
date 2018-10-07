@@ -8,7 +8,7 @@ class Menu extends Component {
     const isMenuOpen = menuOptions.menuOpen ? "open " : "";
     return (
       <div>
-        <div className={"menu " + isMenuOpen} />
+        <div className={"menu " + isMenuOpen}>MinimalistCard</div>
         <div
           className={"menuButton " + isMenuOpen}
           onClick={() => toggleMenu()}

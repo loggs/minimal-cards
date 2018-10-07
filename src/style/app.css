@@ -11,13 +11,15 @@ button:focus {
 div.menuButton {
   left: 10px;
   top: 6px;
-  position: relative;
+  position: fixed;
   display: inline-block;
   cursor: pointer;
+  transition: 0.4s;
 }
 
 div.menuButton.open {
   cursor: pointer;
+  left: 180px;
 }
 
 div.menuBar1,
@@ -50,13 +52,17 @@ div.menu {
   margin: 0;
   padding: 0;
   top: 0px;
+  transition: 0.4s;
+  opacity: 0;
 }
 
 div.menu.open {
-  width: 100px;
-  background-color: red;
+  width: 220px;
+  background-color: white;
   height: 100%;
   position: fixed;
+  border-right: 1px solid grey;
+  opacity: 100;
 }
 
 /* entire container, keeps perspective */
