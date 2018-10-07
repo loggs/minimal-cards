@@ -25,6 +25,7 @@ button:focus {
   margin-top: 15px;
   margin-bottom: 15px;
   bottom: 70px;
+  text-align: center;
 }
 
 @keyframes fadein {
@@ -46,6 +47,10 @@ button:focus {
 /* hide back of pane during swap */
 .front,
 .back {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
   backface-visibility: hidden;
 
   position: absolute;
