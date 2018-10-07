@@ -7,10 +7,16 @@ class Menu extends Component {
     const { menuOptions, toggleMenu } = this.props;
     const isMenuOpen = menuOptions.menuOpen ? "open " : "";
     return (
-      <div className={"menuButton " + isMenuOpen} onClick={() => toggleMenu()}>
-        <div className="menuBar1" />
-        <div className="menuBar2" />
-        <div className="menuBar3" />
+      <div>
+        <div className={"menu " + isMenuOpen} />
+        <div
+          className={"menuButton " + isMenuOpen}
+          onClick={() => toggleMenu()}
+        >
+          <div className="menuBar1" />
+          <div className="menuBar2" />
+          <div className="menuBar3" />
+        </div>
       </div>
     );
   }

@@ -1,13 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 button:focus {
   outline: 0;
 }
 
 /* Create menu button */
 div.menuButton {
-  left: 12px;
-  top: 8px;
-  position: fixed;
+  left: 10px;
+  top: 6px;
+  position: relative;
   display: inline-block;
+  cursor: pointer;
+}
+
+div.menuButton.open {
   cursor: pointer;
 }
 
@@ -34,6 +43,22 @@ div.menuBar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
 }
+
+div.menu {
+  width: 0px;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0px;
+}
+
+div.menu.open {
+  width: 100px;
+  background-color: red;
+  height: 100%;
+  position: fixed;
+}
+
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
