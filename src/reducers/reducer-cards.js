@@ -3,8 +3,8 @@ import uuid from "../helpers/uuid";
 
 const defaultCardValues = {
   flipped: false,
-  front_text: "",
-  back_text: ""
+  front_text: "Front",
+  back_text: "Back"
 };
 
 export default function(state = {}, action) {

@@ -14,8 +14,8 @@ class Card extends Component {
         onClick={() => flipCard(uniqueId)}
       >
         <div className="flipper">
-          <CardFront />
-          <CardBack />
+          <CardFront id={uniqueId} />
+          <CardBack id={uniqueId} />
         </div>
       </div>
     );
