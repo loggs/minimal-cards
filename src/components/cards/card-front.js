@@ -3,13 +3,17 @@ import { connect } from "react-redux";
 import { editCard, toggleCardMode } from "../../actions/index";
 
 class CardFront extends Component {
-  handleChange(event) {}
+  handleChange(event) {
+    const { id, editCard } = this.props;
+    return editCard(id, event.target.value);
+  }
 
   render() {
     const text_or_input = this.props.edit_mode ? (
       <input
         value={this.props.front_text}
         onClick={event => event.stopPropagation()}
+        onInput={this.handleChange.bind(this)}
       />
     ) : (
       this.props.front_text
