@@ -7,14 +7,21 @@ class CardFront extends Component {
 
   render() {
     const text_or_input = this.props.edit_mode ? (
-      <p>In edit mode!</p>
+      <input
+        value={this.props.front_text}
+        onClick={event => event.stopPropagation()}
+      />
     ) : (
       this.props.front_text
     );
+    const { id, toggleCardMode } = this.props;
     return (
       <div
         className="front"
-        onDoubleClick={() => this.props.toggleCardMode(this.props.id)}
+        onDoubleClick={event => {
+          event.stopPropagation();
+          return toggleCardMode(id);
+        }}
       >
         {text_or_input}
       </div>
