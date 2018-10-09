@@ -2,6 +2,7 @@ export const FLIP_CARD = "flip_card";
 export const ADD_CARD = "add_card";
 export const TOGGLE_MENU = "toggle_menu";
 export const EDIT_CARD = "edit_card";
+export const TOGGLE_CARD_MODE = "toggle_card_mode";
 
 export function flipCard(id) {
   return {
@@ -25,6 +26,14 @@ export function editCard(id, value) {
     }
   };
 }
+
+export function toggleCardMode(id) {
+  return {
+    type: TOGGLE_CARD_MODE,
+    payload: id
+  };
+}
+
 export function toggleMenu() {
   return {
     type: TOGGLE_MENU

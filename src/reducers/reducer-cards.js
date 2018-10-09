@@ -1,10 +1,16 @@
-import { FLIP_CARD, ADD_CARD, EDIT_CARD } from "../actions/index";
+import {
+  FLIP_CARD,
+  ADD_CARD,
+  EDIT_CARD,
+  TOGGLE_CARD_MODE
+} from "../actions/index";
 import uuid from "../helpers/uuid";
 
 const defaultCardValues = {
   flipped: false,
   front_text: "Front",
-  back_text: "Back"
+  back_text: "Back",
+  edit_mode: false
 };
 
 export default function(state = {}, action) {
@@ -26,6 +32,14 @@ export default function(state = {}, action) {
         ? { ...card, back_text: value } /* If flipped, update the back */
         : { ...card, front_text: value };
       return { ...state, [id]: new_card_state };
+
+    case TOGGLE_CARD_MODE:
+      const id_t = action.payload;
+      const card_object = state[id_t];
+      return {
+        ...state,
+        [id_t]: { ...card_object, edit_mode: !card_object.edit_mode }
+      };
 
     default:
       return state;
