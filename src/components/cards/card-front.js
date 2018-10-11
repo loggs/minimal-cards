@@ -10,7 +10,8 @@ class CardFront extends Component {
 
   render() {
     const text_or_input = this.props.edit_mode ? (
-      <input
+      <textarea
+        className="card-input"
         value={this.props.front_text}
         onClick={event => event.stopPropagation()}
         onInput={this.handleChange.bind(this)}
