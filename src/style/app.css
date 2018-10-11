@@ -11,6 +11,9 @@ textarea.card-input {
   vertical-align: middle;
   border-radius: 20px;
   outline: 0;
+  border: none;
+  resize: none;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 button:focus {
