@@ -125,10 +125,13 @@ div.menu.open {
 /* hide back of pane during swap */
 .front,
 .back {
+  /*
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  */
+  white-space: pre;
   backface-visibility: hidden;
 
   position: absolute;
