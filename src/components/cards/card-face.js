@@ -2,27 +2,34 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editCard, toggleCardMode } from "../../actions/index";
 
-class CardFront extends Component {
+class CardFace extends Component {
   handleChange(event) {
     const { id, editCard } = this.props;
     return editCard(id, event.target.value);
   }
 
   render() {
+    /* Get the card class and value depending on the side */
+    const cardValue =
+      this.props.side == "front" ? this.props.front_text : this.props.back_text;
+
+    /* Get the content depending on whether the card is flipped or not */
     const text_or_input = this.props.edit_mode ? (
       <textarea
         className="card-input"
-        value={this.props.front_text}
+        value={cardValue}
         onClick={event => event.stopPropagation()}
         onInput={this.handleChange.bind(this)}
       />
     ) : (
-      this.props.front_text
+      cardValue
     );
+
     const { id, toggleCardMode } = this.props;
+
     return (
       <div
-        className="front"
+        className={this.props.side}
         onDoubleClick={event => {
           event.stopPropagation();
           return toggleCardMode(id);
@@ -37,11 +44,13 @@ class CardFront extends Component {
 function mapStateToProps(state, props) {
   return {
     front_text: state.cards[props.id].front_text,
-    edit_mode: state.cards[props.id].edit_mode
+    edit_mode: state.cards[props.id].edit_mode,
+    back_text: state.cards[props.id].back_text,
+    flipped: state.cards[props.id].flipped
   };
 }
 
 export default connect(
   mapStateToProps,
   { editCard, toggleCardMode }
-)(CardFront);
+)(CardFace);

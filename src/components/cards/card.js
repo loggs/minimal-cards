@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CardFront from "./card-front";
-import CardBack from "./card-back";
+import CardFace from "./card-face";
 import { flipCard } from "../../actions/index";
 
 class Card extends Component {
@@ -14,8 +13,8 @@ class Card extends Component {
         onClick={() => flipCard(uniqueId)}
       >
         <div className="flipper">
-          <CardFront id={uniqueId} />
-          <CardBack id={uniqueId} />
+          <CardFace id={uniqueId} side="front" />
+          <CardFace id={uniqueId} side="back" />
         </div>
       </div>
     );
