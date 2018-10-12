@@ -9,27 +9,38 @@ class CardFace extends Component {
   }
 
   render() {
+    /* Destructure props */
+    const {
+      side,
+      front_text,
+      back_text,
+      id,
+      toggleCardMode,
+      edit_mode,
+      flipped
+    } = this.props;
+
+    const is_front = side == "front";
+
     /* Get the card class and value depending on the side */
-    const cardValue =
-      this.props.side == "front" ? this.props.front_text : this.props.back_text;
+    const cardValue = side == "front" ? front_text : back_text;
 
     /* Get the content depending on whether the card is flipped or not */
-    const text_or_input = this.props.edit_mode ? (
-      <textarea
-        className="card-input"
-        value={cardValue}
-        onClick={event => event.stopPropagation()}
-        onInput={this.handleChange.bind(this)}
-      />
-    ) : (
-      cardValue
-    );
-
-    const { id, toggleCardMode } = this.props;
+    const text_or_input =
+      edit_mode && ((is_front && !flipped) || (!is_front && flipped)) ? (
+        <textarea
+          className="card-input"
+          value={cardValue}
+          onClick={event => event.stopPropagation()}
+          onInput={this.handleChange.bind(this)}
+        />
+      ) : (
+        cardValue
+      );
 
     return (
       <div
-        className={this.props.side}
+        className={side}
         onDoubleClick={event => {
           event.stopPropagation();
           return toggleCardMode(id);
