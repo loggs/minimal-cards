@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import { animateScroll } from "react-scroll";
 import Card from "./cards/card";
 import Menu from "./menu";
-import { addCard } from "../actions/index";
+import { addCard, fetchCards } from "../actions/index";
 import _ from "lodash";
 import "../style/app.css";
 
 class App extends Component {
-  /* Auto scroll to bottom of page when new card is added */
+  componentWillMount() {
+    this.props.fetchCards();
+  }
 
   renderCards() {
     return _.map(this.props.cards, (card, k) => {
@@ -18,6 +20,7 @@ class App extends Component {
 
   clickAddButton() {
     this.props.addCard();
+    /* Auto scroll to bottom of page when new card is added */
     animateScroll.scrollToBottom({ duration: 650, isDynamic: true });
   }
 
@@ -42,5 +45,5 @@ function mapStateToProps({ cards }) {
 
 export default connect(
   mapStateToProps,
-  { addCard }
+  { addCard, fetchCards }
 )(App);

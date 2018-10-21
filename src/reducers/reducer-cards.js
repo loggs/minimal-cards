@@ -2,7 +2,8 @@ import {
   FLIP_CARD,
   ADD_CARD,
   EDIT_CARD,
-  TOGGLE_CARD_MODE
+  TOGGLE_CARD_MODE,
+  FETCH_CARDS
 } from "../actions/index";
 import uuid from "../helpers/uuid";
 
@@ -40,6 +41,9 @@ export default function(state = {}, action) {
         ...state,
         [id_t]: { ...card_object, edit_mode: !card_object.edit_mode }
       };
+
+    case FETCH_CARDS:
+      return action.payload.data;
 
     default:
       return state;

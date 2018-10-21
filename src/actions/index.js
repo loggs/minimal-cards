@@ -1,8 +1,11 @@
+import axios from "axios";
+
 export const FLIP_CARD = "flip_card";
 export const ADD_CARD = "add_card";
 export const TOGGLE_MENU = "toggle_menu";
 export const EDIT_CARD = "edit_card";
 export const TOGGLE_CARD_MODE = "toggle_card_mode";
+export const FETCH_CARDS = "fetch_cards";
 
 export function flipCard(id) {
   return {
@@ -37,5 +40,14 @@ export function toggleCardMode(id) {
 export function toggleMenu() {
   return {
     type: TOGGLE_MENU
+  };
+}
+
+export function fetchCards() {
+  const request = axios.get(`${window.location.origin}/api/cards`);
+
+  return {
+    type: FETCH_CARDS,
+    payload: request
   };
 }
