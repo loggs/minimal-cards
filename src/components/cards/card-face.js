@@ -20,10 +20,10 @@ class CardFace extends Component {
       flipped
     } = this.props;
 
-    const is_front = side == "front";
+    const is_front = side === "front";
 
     /* Get the card class and value depending on the side */
-    const cardValue = side == "front" ? front_text : back_text;
+    const cardValue = side === "front" ? front_text : back_text;
 
     /* Get the content depending on whether the card is flipped or not */
     const text_or_input =
@@ -54,10 +54,10 @@ class CardFace extends Component {
 
 function mapStateToProps(state, props) {
   return {
-    front_text: state.cards[props.id].front_text,
-    edit_mode: state.cards[props.id].edit_mode,
-    back_text: state.cards[props.id].back_text,
-    flipped: state.cards[props.id].flipped
+    front_text: state.cards.data[props.id].front_text,
+    edit_mode: state.cards.data[props.id].edit_mode,
+    back_text: state.cards.data[props.id].back_text,
+    flipped: state.cards.data[props.id].flipped
   };
 }
 

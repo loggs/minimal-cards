@@ -11,8 +11,9 @@ class App extends Component {
   /* Auto scroll to bottom of page when new card is added */
 
   renderCards() {
-    return _.map(this.props.cards, (card, k) => {
-      return <Card key={k} uniqueId={k} data={card} />;
+    const { data, order } = this.props.cards;
+    return _.map(order, (card, k) => {
+      return <Card key={card} uniqueId={card} data={data[card]} />;
     });
   }
 
