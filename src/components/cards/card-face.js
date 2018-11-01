@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editCard, toggleCardMode } from "../../actions/index";
+import { editCard, toggleCardMode, deleteCard } from "../../actions/index";
 
 class CardFace extends Component {
   handleChange(event) {
@@ -46,7 +46,9 @@ class CardFace extends Component {
           return toggleCardMode(id);
         }}
       >
-        <button id="delete-card">x</button>
+        <button id="delete-card" onClick={() => this.props.deleteCard(id)}>
+          x
+        </button>
         {text_or_input}
       </div>
     );
@@ -64,5 +66,5 @@ function mapStateToProps(state, props) {
 
 export default connect(
   mapStateToProps,
-  { editCard, toggleCardMode }
+  { editCard, toggleCardMode, deleteCard }
 )(CardFace);

@@ -6,6 +6,7 @@ export const TOGGLE_MENU = "toggle_menu";
 export const EDIT_CARD = "edit_card";
 export const TOGGLE_CARD_MODE = "toggle_card_mode";
 export const FETCH_CARDS = "fetch_cards";
+export const DELETE_CARD = "delete_card";
 
 export function flipCard(id) {
   return {
@@ -49,5 +50,12 @@ export function fetchCards() {
   return {
     type: FETCH_CARDS,
     payload: request
+  };
+}
+
+export function deleteCard(id) {
+  return {
+    type: DELETE_CARD,
+    payload: id
   };
 }

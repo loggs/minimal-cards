@@ -3,7 +3,8 @@ import {
   ADD_CARD,
   EDIT_CARD,
   TOGGLE_CARD_MODE,
-  FETCH_CARDS
+  FETCH_CARDS,
+  DELETE_CARD
 } from "../actions/index";
 import uuid from "../helpers/uuid";
 
@@ -58,6 +59,12 @@ export default function(state = defaultCardsState, action) {
 
     case FETCH_CARDS:
       return action.payload.data;
+
+    case DELETE_CARD:
+      return {
+        ...state,
+        order: state.order.filter(card => card !== action.payload)
+      };
 
     default:
       return state;
