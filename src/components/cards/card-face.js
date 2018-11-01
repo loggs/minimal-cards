@@ -35,7 +35,7 @@ class CardFace extends Component {
           onInput={this.handleChange.bind(this)}
         />
       ) : (
-        cardValue
+        <div className="content-text">{cardValue}</div>
       );
 
     return (
@@ -46,6 +46,7 @@ class CardFace extends Component {
           return toggleCardMode(id);
         }}
       >
+        <button id="delete-card">x</button>
         {text_or_input}
       </div>
     );
