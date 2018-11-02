@@ -10,7 +10,11 @@ import uuid from "../helpers/uuid";
 
 const defaultCardsState = {
   data: {},
-  order: []
+  order: [],
+  mouseXY: [0, 0],
+  mouseCardDelta: [0, 0],
+  lastPressed: null, // Last card pressed id
+  isPressed: false
 };
 
 const defaultCardValues = {
