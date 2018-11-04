@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 
 export const FLIP_CARD = "flip_card";
 export const ADD_CARD = "add_card";
@@ -48,11 +48,11 @@ export function toggleMenu() {
 }
 
 export function fetchCards() {
-  const request = axios.get(`${window.location.origin}/api/cards`);
+  // const request = axios.get(`${window.location.origin}/api/cards`);
 
   return {
     type: FETCH_CARDS,
-    payload: request
+    payload: null // request
   };
 }
 

@@ -21,7 +21,7 @@ class App extends Component {
 
   handleTouchMove = event => {
     event.preventDefault();
-    mouseMove(event.touches[0]);
+    this.props.mouseMove(event.touches[0]);
   };
 
   renderCards() {
