@@ -14,9 +14,9 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener("touchmove", this.handleTouchMove);
-    window.addEventListener("touchend", mouseUp);
-    window.addEventListener("mousemove", mouseMove);
-    window.addEventListener("mouseup", mouseUp);
+    window.addEventListener("touchend", this.props.mouseUp);
+    window.addEventListener("mousemove", this.props.mouseMove);
+    window.addEventListener("mouseup", this.props.mouseUp);
   }
 
   handleTouchMove = event => {
@@ -58,5 +58,5 @@ function mapStateToProps({ cards }) {
 
 export default connect(
   mapStateToProps,
-  { addCard, fetchCards }
+  { addCard, fetchCards, mouseUp, mouseMove }
 )(App);
