@@ -7,6 +7,9 @@ export const EDIT_CARD = "edit_card";
 export const TOGGLE_CARD_MODE = "toggle_card_mode";
 export const FETCH_CARDS = "fetch_cards";
 export const DELETE_CARD = "delete_card";
+export const MOUSE_MOVE = "mouse_move";
+export const MOUSE_UP = "mouse_up";
+export const MOUSE_DOWN = "mouse_down";
 
 export function flipCard(id) {
   return {
@@ -57,5 +60,29 @@ export function deleteCard(id) {
   return {
     type: DELETE_CARD,
     payload: id
+  };
+}
+
+export function mouseMove(coords) {
+  return {
+    type: MOUSE_MOVE,
+    payload: coords
+  };
+}
+
+export function mouseUp() {
+  return {
+    type: MOUSE_UP
+  };
+}
+
+export function mouseDown(key, pressCoords, pageCoords) {
+  return {
+    type: MOUSE_DOWN,
+    payload: {
+      key,
+      pressCoords,
+      pageCoords
+    }
   };
 }

@@ -4,7 +4,9 @@ import {
   EDIT_CARD,
   TOGGLE_CARD_MODE,
   FETCH_CARDS,
-  DELETE_CARD
+  DELETE_CARD,
+  MOUSE_MOVE,
+  MOUSE_UP
 } from "../actions/index";
 import uuid from "../helpers/uuid";
 
@@ -70,6 +72,11 @@ export default function(state = defaultCardsState, action) {
         order: state.order.filter(card => card !== action.payload)
       };
 
+    case MOUSE_MOVE:
+      return state;
+
+    case MOUSE_UP:
+      return { ...state, isPressed: false, mouseCardDelta: [0, 0] };
     default:
       return state;
   }

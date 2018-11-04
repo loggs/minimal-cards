@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { animateScroll } from "react-scroll";
 import Card from "./cards/card";
 import Menu from "./menu";
-import { addCard, fetchCards } from "../actions/index";
+import { addCard, fetchCards, mouseMove, mouseUp } from "../actions/index";
 import _ from "lodash";
 import "../style/app.css";
 
@@ -11,6 +11,18 @@ class App extends Component {
   componentWillMount() {
     this.props.fetchCards();
   }
+
+  componentDidMount() {
+    window.addEventListener("touchmove", this.handleTouchMove);
+    window.addEventListener("touchend", mouseUp);
+    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mouseup", mouseUp);
+  }
+
+  handleTouchMove = event => {
+    event.preventDefault();
+    mouseMove(event.touches[0]);
+  };
 
   renderCards() {
     const { data, order } = this.props.cards;
