@@ -9,15 +9,19 @@ class Card extends Component {
     const { uniqueId, data, flipCard } = this.props;
     const extraClass = data.flipped ? "hover" : "";
     return (
-      <div
-        className={"flip-container " + extraClass}
-        onClick={() => flipCard(uniqueId)}
-      >
-        <div className="flipper">
-          <CardFace id={uniqueId} side="front" />
-          <CardFace id={uniqueId} side="back" />
-        </div>
-      </div>
+      <Motion key={uniqueId} style={{ translateX: 0 }}>
+        {({ translateX, translateY, scale, boxShadow }) => (
+          <div
+            className={"flip-container " + extraClass}
+            onClick={() => flipCard(uniqueId)}
+          >
+            <div className="flipper">
+              <CardFace id={uniqueId} side="front" />
+              <CardFace id={uniqueId} side="back" />
+            </div>
+          </div>
+        )}
+      </Motion>
     );
   }
 }
