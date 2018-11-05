@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CardFace from "./card-face";
 import { flipCard } from "../../actions/index";
+import { Motion, spring } from "react-motion";
 
 class Card extends Component {
   render() {

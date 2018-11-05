@@ -89,7 +89,9 @@ export default function(state = defaultCardsState, action) {
         mouseCardDelta: [dx, dy]
       } = state;
       const { pageX, pageY } = action.payload;
-      if (isPressed) {
+      const mouseXY = [pageX - dx, pageY - dy];
+      return isPressed
+        ? /*
         const count = order.length;
         const mouseXY = [pageX - dx, pageY - dy];
         const col = clamp(Math.floor(mouseXY[0] / width), 0, 2);
@@ -99,11 +101,11 @@ export default function(state = defaultCardsState, action) {
           Math.floor(count / 3)
         );
         const index = row + col;
-        // const newOrder = reinsert(order, order.indexOf(lastPressed), index);
-        return { ...state, mouseXY, order: order };
-      } else {
-        return state;
-      }
+        const newOrder = reinsert(order, order.indexOf(lastPressed), index);
+        */
+
+          { ...state, mouseXY, order: order }
+        : { ...state, mouseXY };
 
     case MOUSE_UP:
       return { ...state, isPressed: false, mouseCardDelta: [0, 0] };
