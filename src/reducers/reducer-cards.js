@@ -36,6 +36,7 @@ export default function(state = defaultCardsState, action) {
     case ADD_CARD:
       const unique_key = uuid();
       return {
+        ...state,
         data: { ...state.data, [unique_key]: defaultCardValues },
         order: [...state.order, unique_key]
       };
@@ -88,10 +89,15 @@ export default function(state = defaultCardsState, action) {
         isPressed,
         mouseCardDelta: [dx, dy]
       } = state;
+      /*
       const { pageX, pageY } = action.payload;
       const mouseXY = [pageX - dx, pageY - dy];
-      return isPressed
-        ? /*
+      */
+
+      return state;
+    /*
+      isPressed
+        ? /
         const count = order.length;
         const mouseXY = [pageX - dx, pageY - dy];
         const col = clamp(Math.floor(mouseXY[0] / width), 0, 2);
@@ -102,11 +108,9 @@ export default function(state = defaultCardsState, action) {
         );
         const index = row + col;
         const newOrder = reinsert(order, order.indexOf(lastPressed), index);
-        */
-
-          { ...state, mouseXY, order: order }
-        : { ...state, mouseXY };
-
+          { ...state, mouseXY: mouseXY, order: order }
+        : { ...state, mouseXY: mouseXY };
+      */
     case MOUSE_UP:
       return { ...state, isPressed: false, mouseCardDelta: [0, 0] };
 
