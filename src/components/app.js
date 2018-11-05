@@ -4,7 +4,6 @@ import { animateScroll } from "react-scroll";
 import Card from "./cards/card";
 import Menu from "./menu";
 import { addCard, fetchCards, mouseMove, mouseUp } from "../actions/index";
-import _ from "lodash";
 import "../style/app.css";
 
 class App extends Component {
@@ -26,7 +25,7 @@ class App extends Component {
 
   renderCards() {
     const { data, order } = this.props.cards;
-    return _.map(order, (card, k) => {
+    return order.map((card, k) => {
       return <Card key={card} uniqueId={card} data={data[card]} />;
     });
   }
