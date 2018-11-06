@@ -25,7 +25,7 @@ class App extends Component {
 
   renderCards() {
     const { data, order } = this.props.cards;
-    return order.map((card, k) => {
+    return order.map(card => {
       return <Card key={card} uniqueId={card} data={data[card]} />;
     });
   }

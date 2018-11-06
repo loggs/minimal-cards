@@ -29,8 +29,7 @@ const defaultCardValues = {
 };
 
 const width = 400;
-const height = 280;
-
+const height = 295;
 export default function(state = defaultCardsState, action) {
   switch (action.type) {
     case ADD_CARD:
@@ -42,14 +41,14 @@ export default function(state = defaultCardsState, action) {
       };
 
     case FLIP_CARD:
+      console.log("Card flipped");
       const cardKey = action.payload;
       const card_state = state.data[cardKey];
-      const flip_value = !card_state.flipped;
       return {
         ...state,
         data: {
           ...state.data,
-          [cardKey]: { ...card_state, flipped: flip_value }
+          [cardKey]: { ...card_state, flipped: !card_state.flipped }
         }
       };
 
@@ -102,7 +101,7 @@ export default function(state = defaultCardsState, action) {
         );
         const index = row + col;
         const newOrder = reinsert(order, order.indexOf(lastPressed), index);
-        return { ...state, mouseXY: mouseXY, order: newOrder };
+        return { ...state, mouseXY: mouseXY, order: order };
       } else {
         return { ...state, mouseXY: mouseXY };
       }
@@ -111,6 +110,7 @@ export default function(state = defaultCardsState, action) {
       return { ...state, isPressed: false, mouseCardDelta: [0, 0] };
 
     case MOUSE_DOWN:
+      console.log("Mouse down action");
       const {
         key,
         pressCoords: [pressX, pressY],
