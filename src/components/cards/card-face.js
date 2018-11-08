@@ -25,6 +25,10 @@ class CardFace extends Component {
     /* Get the card class and value depending on the side */
     const cardValue = side === "front" ? front_text : back_text;
 
+    /* Differentiate edit modes */
+
+    const isBeingEdited = edit_mode ? " editing" : "";
+
     /* Get the content depending on whether the card is flipped or not */
     const text_or_input =
       edit_mode && ((is_front && !flipped) || (!is_front && flipped)) ? (
@@ -40,7 +44,7 @@ class CardFace extends Component {
 
     return (
       <div
-        className={side}
+        className={side + isBeingEdited}
         onDoubleClick={event => {
           event.stopPropagation();
           return toggleCardMode(id);

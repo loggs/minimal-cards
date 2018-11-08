@@ -160,6 +160,10 @@ div.menu.open {
   border-radius: 20px;
 }
 
+div.editing {
+  border: 1px solid blue;
+}
+
 .content-text {
   white-space: pre-wrap;
 
