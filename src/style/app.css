@@ -3,6 +3,31 @@ body {
   padding: 0;
 }
 
+span.dot {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  right: 8px;
+  top: 8px;
+  background-color: transparent;
+  position: absolute;
+}
+
+span.dot:hover {
+  background-color: #bbb;
+}
+
+#delete-card {
+  border: 0px solid transparent;
+  font-size: 15px;
+  font-family: verdana;
+  right: -1px;
+  top: -3px;
+  background-color: transparent;
+  position: absolute;
+}
+
 textarea.card-input {
   width: 370px;
   height: 250px;
@@ -176,14 +201,4 @@ div.menu.open {
 .add-card-text {
   font-size: 40px;
   transform: translateY(-10%);
-}
-
-#delete-card {
-  border: 0px solid transparent;
-  font-size: 15px;
-  font-family: verdana;
-  right: 2px;
-  top: 2px;
-  background-color: transparent;
-  position: absolute;
 }

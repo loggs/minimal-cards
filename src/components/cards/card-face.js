@@ -46,9 +46,11 @@ class CardFace extends Component {
           return toggleCardMode(id);
         }}
       >
-        <button id="delete-card" onClick={() => this.props.deleteCard(id)}>
-          x
-        </button>
+        <span className="dot">
+          <button id="delete-card" onClick={() => this.props.deleteCard(id)}>
+            x
+          </button>
+        </span>
         {text_or_input}
       </div>
     );
