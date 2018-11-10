@@ -50,7 +50,11 @@ class CardFace extends Component {
           return toggleCardMode(id);
         }}
       >
-        <div className="mover">
+        <div
+          className="mover"
+          onMouseDown={this.onMouseDown}
+          onTouchStart={this.onTouchStart}
+        >
           <i class="arrow fa fa-arrows-v" />
         </div>
         <div className="dot">

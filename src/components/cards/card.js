@@ -57,7 +57,15 @@ class Card extends Component {
                 zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
               }}
             >
-              <CardFace id={uniqueId} side="front" />
+              <CardFace
+                id={uniqueId}
+                side="front"
+                onMouseDown={() => mouseDown(null, uniqueId, [x, y])}
+                onTouchStart={this.handleTouchStart.bind(null, uniqueId, [
+                  x,
+                  y
+                ])}
+              />
               <CardFace id={uniqueId} side="back" />
             </div>
           </div>

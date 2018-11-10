@@ -32,6 +32,10 @@ div.dot {
   position: absolute;
 }
 
+div.mover:hover {
+  background-color: #bbb;
+}
+
 div.dot:hover {
   background-color: #bbb;
 }
