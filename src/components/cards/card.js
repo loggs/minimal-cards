@@ -52,8 +52,8 @@ class Card extends Component {
             <div
               className="flipper"
               style={{
-                // WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
-                // transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
+                WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
+                transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
                 zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
               }}
             >

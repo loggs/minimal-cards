@@ -21,6 +21,17 @@ div.mover {
   position: absolute;
 }
 
+div.pencil {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  left: 20px;
+  top: 8px;
+  background-color: transparent;
+  position: absolute;
+}
+
 div.dot {
   height: 20px;
   width: 20px;

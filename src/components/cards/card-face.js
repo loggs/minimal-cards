@@ -52,11 +52,15 @@ class CardFace extends Component {
       >
         <div
           className="mover"
-          onMouseDown={this.onMouseDown}
-          onTouchStart={this.onTouchStart}
+          onMouseDown={this.props.onMouseDown}
+          onTouchStart={this.props.onTouchStart}
         >
-          <i class="arrow fa fa-arrows-v" />
+          <i className="arrow fa fa-arrows-v" />
         </div>
+        <div className="editor">
+          <i className="pencil fa fa-pencil" />
+        </div>
+
         <div className="dot">
           <button id="delete-card" onClick={() => this.props.deleteCard(id)}>
             x
