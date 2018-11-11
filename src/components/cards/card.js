@@ -52,19 +52,16 @@ class Card extends Component {
             <div
               className="flipper"
               style={{
-                WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
+                // WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
+                // transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
                 zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
               }}
             >
               <CardFace
                 id={uniqueId}
                 side="front"
-                onMouseDown={() => mouseDown(null, uniqueId, [x, y])}
-                onTouchStart={this.handleTouchStart.bind(null, uniqueId, [
-                  x,
-                  y
-                ])}
+                // onMouseDown={() => mouseDown(null, uniqueId, [x, y])}
+                // onTouchStart={this.handleTouchStart.bind(null, uniqueId, [ x, y ])}
               />
               <CardFace id={uniqueId} side="back" />
             </div>
