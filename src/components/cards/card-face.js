@@ -43,13 +43,8 @@ class CardFace extends Component {
       );
 
     return (
-      <div
-        className={side + isBeingEdited}
-        onDoubleClick={event => {
-          event.stopPropagation();
-          return toggleCardMode(id);
-        }}
-      >
+      <div className={side + isBeingEdited}>
+        {/* This is the change order button to allow drag and drop cards */}
         <div
           className="mover"
           onMouseDown={this.props.onMouseDown}
@@ -57,10 +52,19 @@ class CardFace extends Component {
         >
           <i className="arrow fa fa-arrows-v" />
         </div>
-        <div className="editor">
+
+        {/* This is the edit button to edit card text */}
+        <div
+          className="editor"
+          onClick={event => {
+            event.stopPropagation();
+            return toggleCardMode(id);
+          }}
+        >
           <i className="pencil fa fa-pencil" />
         </div>
 
+        {/* This is the delete button to remove a card */}
         <div className="dot">
           <button id="delete-card" onClick={() => this.props.deleteCard(id)}>
             x

@@ -3,13 +3,6 @@ body {
   padding: 0;
 }
 
-i.arrow {
-  position: absolute;
-  font-size: 12px;
-  top: 5px;
-  right: 7.5px;
-}
-
 div.mover {
   height: 20px;
   width: 20px;
@@ -21,15 +14,30 @@ div.mover {
   position: absolute;
 }
 
-div.pencil {
+i.arrow {
+  position: absolute;
+  font-size: 12px;
+  top: 5px;
+  right: 7.5px;
+}
+
+div.editor {
   height: 20px;
   width: 20px;
   border-radius: 50%;
   border: 1px solid black;
-  left: 20px;
+  left: 35px;
   top: 8px;
+  font-size: 12px;
   background-color: transparent;
   position: absolute;
+}
+
+i.pencil {
+  position: absolute;
+  font-size: 12px;
+  top: 4px;
+  right: 5px;
 }
 
 div.dot {
@@ -37,17 +45,15 @@ div.dot {
   width: 20px;
   border-radius: 50%;
   border: 1px solid black;
-  right: 8px;
+  left: 62px;
   top: 8px;
   background-color: transparent;
   position: absolute;
 }
 
-div.mover:hover {
-  background-color: #bbb;
-}
-
-div.dot:hover {
+div.mover:hover,
+div.dot:hover,
+div.editor:hover {
   background-color: #bbb;
 }
 
@@ -75,6 +81,7 @@ textarea.card-input {
   resize: none;
   background-color: rgba(0, 0, 0, 0);
   margin: 15px;
+  margin-top: 37px;
 }
 
 button:focus {
@@ -205,6 +212,7 @@ div.editing {
 
   font-size: 30px;
   margin: 15px;
+  margin-top: 37px;
   font-family: times;
 }
 
