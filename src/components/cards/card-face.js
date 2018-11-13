@@ -19,13 +19,14 @@ class CardFace extends Component {
       edit_mode,
       flipped,
       onMouseDown,
-      onTouchStart
+      onTouchStart,
+      deleteCard
     } = this.props;
 
     const is_front = side === "front";
 
     /* Get the card class and value depending on the side */
-    const cardValue = side === "front" ? front_text : back_text;
+    const cardValue = is_front ? front_text : back_text;
 
     /* Differentiate edit modes */
 
@@ -49,8 +50,7 @@ class CardFace extends Component {
         {/* This is the change order button to allow drag and drop cards */}
         <div
           className="mover"
-          onMouseDown={this.props.onMouseDown}
-          onTouchStart={this.props.onTouchStart}
+          onMouseDown={onMouseDown}
           onClick={event => event.stopPropagation()}
         >
           <i className="arrow fa fa-arrows-v" />
@@ -69,7 +69,7 @@ class CardFace extends Component {
 
         {/* This is the delete button to remove a card */}
         <div className="dot">
-          <button id="delete-card" onClick={() => this.props.deleteCard(id)}>
+          <button id="delete-card" onClick={() => deleteCard(id)}>
             x
           </button>
         </div>
@@ -81,11 +81,12 @@ class CardFace extends Component {
 }
 
 function mapStateToProps(state, props) {
+  const card = state.cards.data[props.id];
   return {
-    front_text: state.cards.data[props.id].front_text,
-    edit_mode: state.cards.data[props.id].edit_mode,
-    back_text: state.cards.data[props.id].back_text,
-    flipped: state.cards.data[props.id].flipped
+    front_text: card.front_text,
+    edit_mode: card.edit_mode,
+    back_text: card.back_text,
+    flipped: card.flipped
   };
 }
 
