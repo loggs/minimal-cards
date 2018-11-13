@@ -60,10 +60,19 @@ class Card extends Component {
               <CardFace
                 id={uniqueId}
                 side="front"
-                // onMouseDown={() => mouseDown(null, uniqueId, [x, y])}
-                // onTouchStart={this.handleTouchStart.bind(null, uniqueId, [ x, y ])}
+                onMouseDown={() => mouseDown(null, uniqueId, [x, y])}
+                onTouchStart={() =>
+                  this.handleTouchStart(null, uniqueId, [x, y])
+                }
               />
-              <CardFace id={uniqueId} side="back" />
+              <CardFace
+                id={uniqueId}
+                side="back"
+                onMouseDown={() => mouseDown(null, uniqueId, [x, y])}
+                onTouchStart={() =>
+                  this.handleTouchStart(null, uniqueId, [x, y])
+                }
+              />
             </div>
           </div>
         )}

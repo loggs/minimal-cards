@@ -17,7 +17,9 @@ class CardFace extends Component {
       id,
       toggleCardMode,
       edit_mode,
-      flipped
+      flipped,
+      onMouseDown,
+      onTouchStart
     } = this.props;
 
     const is_front = side === "front";
@@ -49,6 +51,7 @@ class CardFace extends Component {
           className="mover"
           onMouseDown={this.props.onMouseDown}
           onTouchStart={this.props.onTouchStart}
+          onClick={event => event.stopPropagation()}
         >
           <i className="arrow fa fa-arrows-v" />
         </div>
