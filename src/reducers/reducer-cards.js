@@ -109,7 +109,6 @@ export default function(state = defaultCardsState, action) {
     case MOUSE_UP:
       return {
         ...state,
-        lastPressed: null,
         isPressed: false,
         mouseCardDelta: [0, 0]
       };

@@ -25,7 +25,7 @@ class Card extends Component {
       style = {
         translateX: x,
         translateY: y,
-        scale: spring(1.2, { stiffness: 180, damping: 10 })
+        scale: spring(1.1, { stiffness: 180, damping: 10 })
       };
     } else {
       y = layout[visualPosition];
@@ -40,7 +40,7 @@ class Card extends Component {
       <Motion key={uniqueId} style={style}>
         {({ translateX, translateY, scale }) => {
           const moverObject =
-            cards.lastPressed === uniqueId
+            cards.lastPressed === uniqueId && cards.isPressed
               ? {
                   WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
                   transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`
