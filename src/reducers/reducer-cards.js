@@ -118,8 +118,9 @@ export default function(state = defaultCardsState, action) {
       const {
         key,
         pressCoords: [pressX, pressY],
-        pageCoords: { pageCX, pageCY }
+        pageCoords: { pageX: pageCX, pageY: pageCY }
       } = action.payload;
+      console.log(pageCX, pageCY);
       return {
         ...state,
         lastPressed: key,

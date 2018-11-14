@@ -25,7 +25,7 @@ class Card extends Component {
       style = {
         translateX: x,
         translateY: y,
-        scale: spring(1.1, { stiffness: 180, damping: 10 })
+        scale: spring(1.05, { stiffness: 120, damping: 17 })
       };
     } else {
       y = layout[visualPosition];
@@ -39,6 +39,7 @@ class Card extends Component {
     return (
       <Motion key={uniqueId} style={style}>
         {({ translateX, translateY, scale }) => {
+          // console.log(translateX, translateY);
           const moverObject =
             cards.lastPressed === uniqueId && cards.isPressed
               ? {
@@ -65,7 +66,7 @@ class Card extends Component {
                     x,
                     y
                   ])}
-                  //onMouseDown={event => console.log(event)}
+                  // onMouseDown={event => console.log(event)}
                 />
                 <CardFace id={uniqueId} side="back" />
               </div>
