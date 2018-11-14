@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CardFace from "./card-face";
-import { flipCard } from "../../actions/index";
+import { flipCard, mouseDown } from "../../actions/index";
 import { Motion, spring } from "react-motion";
 
 class Card extends Component {
@@ -58,7 +58,15 @@ class Card extends Component {
                   zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
                 }}
               >
-                <CardFace id={uniqueId} side="front" />
+                <CardFace
+                  id={uniqueId}
+                  side="front"
+                  onMouseDown={this.props.mouseDown.bind(null, uniqueId, [
+                    x,
+                    y
+                  ])}
+                  //onMouseDown={event => console.log(event)}
+                />
                 <CardFace id={uniqueId} side="back" />
               </div>
             </div>
@@ -73,5 +81,5 @@ export default connect(
   ({ cards }) => ({
     cards
   }),
-  { flipCard }
+  { flipCard, mouseDown }
 )(Card);

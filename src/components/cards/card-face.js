@@ -50,7 +50,7 @@ class CardFace extends Component {
         {/* This is the change order button to allow drag and drop cards */}
         <div
           className="mover"
-          onMouseDown={onMouseDown}
+          onMouseDown={this.props.onMouseDown}
           onClick={event => event.stopPropagation()}
         >
           <i className="arrow fa fa-arrows-v" />

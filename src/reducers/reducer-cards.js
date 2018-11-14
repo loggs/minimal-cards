@@ -107,7 +107,12 @@ export default function(state = defaultCardsState, action) {
       }
 
     case MOUSE_UP:
-      return { ...state, isPressed: false, mouseCardDelta: [0, 0] };
+      return {
+        ...state,
+        lastPressed: null,
+        isPressed: false,
+        mouseCardDelta: [0, 0]
+      };
 
     case MOUSE_DOWN:
       console.log("Mouse down action");
