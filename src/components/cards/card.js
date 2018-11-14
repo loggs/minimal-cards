@@ -38,24 +38,32 @@ class Card extends Component {
     }
     return (
       <Motion key={uniqueId} style={style}>
-        {({ translateX, translateY, scale }) => (
-          <div
-            className={"flip-container " + extraClass}
-            onClick={() => flipCard(uniqueId)}
-          >
+        {({ translateX, translateY, scale }) => {
+          const moverObject =
+            cards.lastPressed === uniqueId
+              ? {
+                  WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`
+                }
+              : {};
+          return (
             <div
-              className="flipper"
-              style={{
-                // WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
-                // transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
-                zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
-              }}
+              className={"flip-container " + extraClass}
+              onClick={() => flipCard(uniqueId)}
             >
-              <CardFace id={uniqueId} side="front" />
-              <CardFace id={uniqueId} side="back" />
+              <div
+                className="flipper"
+                style={{
+                  ...moverObject,
+                  zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
+                }}
+              >
+                <CardFace id={uniqueId} side="front" />
+                <CardFace id={uniqueId} side="back" />
+              </div>
             </div>
-          </div>
-        )}
+          );
+        }}
       </Motion>
     );
   }
