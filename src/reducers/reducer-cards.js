@@ -41,7 +41,6 @@ export default function(state = defaultCardsState, action) {
       };
 
     case FLIP_CARD:
-      console.log("Card flipped");
       const cardKey = action.payload;
       const card_state = state.data[cardKey];
       return {
@@ -114,13 +113,11 @@ export default function(state = defaultCardsState, action) {
       };
 
     case MOUSE_DOWN:
-      console.log("Mouse down action");
       const {
         key,
         pressCoords: [pressX, pressY],
         pageCoords: { pageX: pageCX, pageY: pageCY }
       } = action.payload;
-      console.log(pageCX, pageCY);
       return {
         ...state,
         lastPressed: key,

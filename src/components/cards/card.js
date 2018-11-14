@@ -39,7 +39,6 @@ class Card extends Component {
     return (
       <Motion key={uniqueId} style={style}>
         {({ translateX, translateY, scale }) => {
-          // console.log(translateX, translateY);
           const moverObject =
             cards.lastPressed === uniqueId && cards.isPressed
               ? {
@@ -66,7 +65,6 @@ class Card extends Component {
                     x,
                     y
                   ])}
-                  // onMouseDown={event => console.log(event)}
                 />
                 <CardFace id={uniqueId} side="back" />
               </div>
