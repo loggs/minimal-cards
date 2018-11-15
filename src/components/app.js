@@ -12,16 +12,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("touchmove", this.handleTouchMove);
-    window.addEventListener("touchend", this.props.mouseUp);
     window.addEventListener("mousemove", this.props.mouseMove);
     window.addEventListener("mouseup", this.props.mouseUp);
   }
-
-  handleTouchMove = event => {
-    event.preventDefault();
-    this.props.mouseMove(event.touches[0]);
-  };
 
   renderCards() {
     const { data, order } = this.props.cards;

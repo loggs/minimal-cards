@@ -10,7 +10,7 @@ import {
   MOUSE_DOWN
 } from "../actions/index";
 import uuid from "../helpers/uuid";
-import { clamp, reinsert } from "../helpers/draggable";
+// import { clamp, reinsert } from "../helpers/draggable";
 
 const defaultCardsState = {
   data: {},
@@ -28,8 +28,8 @@ const defaultCardValues = {
   edit_mode: false
 };
 
-const width = 400;
-const height = 295;
+// const width = 400;
+// const height = 295;
 export default function(state = defaultCardsState, action) {
   switch (action.type) {
     case ADD_CARD:
@@ -83,24 +83,23 @@ export default function(state = defaultCardsState, action) {
     case MOUSE_MOVE:
       const {
         order,
-        lastPressed,
+        // lastPressed,
         isPressed,
         mouseCardDelta: [dx, dy]
       } = state;
       const { pageX, pageY } = action.payload;
       const mouseXY = [pageX - dx, pageY - dy];
       if (isPressed) {
-        const count = order.length;
-        const mouseXY = [pageX - dx, pageY - dy];
-        const col = clamp(Math.floor(mouseXY[0] / width), 0, 2);
-        const row = clamp(
-          Math.floor(mouseXY[1] / height),
-          0,
-          Math.floor(count / 3)
-        );
-        const index = row + col;
-        const newOrder = reinsert(order, order.indexOf(lastPressed), index);
-        return { ...state, mouseXY: mouseXY, order: order };
+        //const count = order.length;
+        //const col = clamp(Math.floor(mouseXY[0] / width), 0, 2);
+        //const row = clamp(
+        //  Math.floor(mouseXY[1] / height),
+        //  0,
+        //  Math.floor(count / 3)
+        //);
+        //const index = row + col;
+        //const newOrder = reinsert(order, order.indexOf(lastPressed), index);
+        return { ...state, mouseXY: mouseXY };
       } else {
         return { ...state, mouseXY: mouseXY };
       }

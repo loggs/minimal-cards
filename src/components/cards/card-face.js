@@ -18,8 +18,6 @@ class CardFace extends Component {
       toggleCardMode,
       edit_mode,
       flipped,
-      onMouseDown,
-      onTouchStart,
       deleteCard
     } = this.props;
 

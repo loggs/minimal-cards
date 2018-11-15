@@ -25,15 +25,15 @@ class Card extends Component {
       style = {
         translateX: x,
         translateY: y,
-        scale: spring(1.05, { stiffness: 120, damping: 17 })
+        scale: 1.05 // spring(1.05, { stiffness: 120, damping: 17 })
       };
     } else {
       y = layout[visualPosition];
       x = 0;
       style = {
-        translateX: 0,
-        translateY: spring(y, { stiffness: 120, damping: 17 }),
-        scale: spring(1, { stiffness: 180, damping: 10 })
+        translateX: x,
+        translateY: y, // spring(y, { stiffness: 120, damping: 17 }),
+        scale: spring(1) // spring(1, { stiffness: 180, damping: 10 })
       };
     }
     return (
@@ -43,7 +43,8 @@ class Card extends Component {
             cards.lastPressed === uniqueId && cards.isPressed
               ? {
                   WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
-                  transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
+                  zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
                 }
               : {};
           return (
@@ -51,13 +52,7 @@ class Card extends Component {
               className={"flip-container " + extraClass}
               onClick={() => flipCard(uniqueId)}
             >
-              <div
-                className="flipper"
-                style={{
-                  ...moverObject,
-                  zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
-                }}
-              >
+              <div className="flipper" style={moverObject}>
                 <CardFace
                   id={uniqueId}
                   side="front"
