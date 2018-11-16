@@ -67,7 +67,13 @@ class CardFace extends Component {
 
         {/* This is the delete button to remove a card */}
         <div className="dot">
-          <button id="delete-card" onClick={() => deleteCard(id)}>
+          <button
+            id="delete-card"
+            onClick={event => {
+              event.stopPropagation();
+              deleteCard(id);
+            }}
+          >
             x
           </button>
         </div>

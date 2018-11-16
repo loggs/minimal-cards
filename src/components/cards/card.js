@@ -25,15 +25,15 @@ class Card extends Component {
       style = {
         translateX: x,
         translateY: y,
-        scale: 1.05 // spring(1.05, { stiffness: 120, damping: 17 })
+        scale: spring(1.05, { stiffness: 120, damping: 17 })
       };
     } else {
       y = layout[visualPosition];
       x = 0;
       style = {
         translateX: x,
-        translateY: y, // spring(y, { stiffness: 120, damping: 17 }),
-        scale: spring(1) // spring(1, { stiffness: 180, damping: 10 })
+        translateY: y,
+        scale: spring(1, { stiffness: 180, damping: 10 })
       };
     }
     const coords = [x, y];
@@ -49,7 +49,7 @@ class Card extends Component {
                 }
               : {};
           return (
-            <div style={moverObject}>
+            <div style={moverObject} onClick={event => event.stopPropagation()}>
               <div
                 className={"flip-container " + extraClass}
                 onClick={() => flipCard(uniqueId)}
