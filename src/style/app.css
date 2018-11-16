@@ -14,6 +14,10 @@ div.mover {
   position: absolute;
 }
 
+div.prevent-flip {
+  height: 37px;
+}
+
 i.arrow {
   position: absolute;
   font-size: 12px;
@@ -80,8 +84,8 @@ textarea.card-input {
   border: none;
   resize: none;
   background-color: rgba(0, 0, 0, 0);
-  margin: 15px;
-  margin-top: 37px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 button:focus {
@@ -211,8 +215,9 @@ div.editing {
   word-break: break-all;
 
   font-size: 30px;
-  margin: 15px;
-  margin-top: 37px;
+  margin-left: 15px;
+  margin-right: 15px;
+  /* margin-top: 37px; */
   font-family: times;
 }
 

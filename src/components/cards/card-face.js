@@ -45,39 +45,37 @@ class CardFace extends Component {
 
     return (
       <div className={side + isBeingEdited}>
-        {/* This is the change order button to allow drag and drop cards */}
         <div
-          className="mover"
-          onMouseDown={this.props.onMouseDown}
           onClick={event => event.stopPropagation()}
+          className="prevent-flip"
         >
-          <i className="arrow fa fa-arrows-v" />
-        </div>
+          {/* This is the change order button to allow drag and drop cards */}
+          <div
+            className="mover"
+            onMouseDown={this.props.onMouseDown}
+            onClick={event => event.stopPropagation()}
+          >
+            <i className="arrow fa fa-arrows-v" />
+          </div>
 
-        {/* This is the edit button to edit card text */}
-        <div
-          className="editor"
-          onClick={event => {
-            event.stopPropagation();
-            return toggleCardMode(id);
-          }}
-        >
-          <i className="pencil fa fa-pencil" />
-        </div>
-
-        {/* This is the delete button to remove a card */}
-        <div className="dot">
-          <button
-            id="delete-card"
+          {/* This is the edit button to edit card text */}
+          <div
+            className="editor"
             onClick={event => {
               event.stopPropagation();
-              deleteCard(id);
+              return toggleCardMode(id);
             }}
           >
-            x
-          </button>
-        </div>
+            <i className="pencil fa fa-pencil" />
+          </div>
 
+          {/* This is the delete button to remove a card */}
+          <div className="dot">
+            <button id="delete-card" onClick={() => deleteCard(id)}>
+              x
+            </button>
+          </div>
+        </div>
         {text_or_input}
       </div>
     );
