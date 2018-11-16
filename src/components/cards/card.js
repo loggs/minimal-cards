@@ -36,6 +36,7 @@ class Card extends Component {
         scale: spring(1) // spring(1, { stiffness: 180, damping: 10 })
       };
     }
+    const coords = [x, y];
     return (
       <Motion key={uniqueId} style={style}>
         {({ translateX, translateY, scale }) => {
@@ -48,20 +49,31 @@ class Card extends Component {
                 }
               : {};
           return (
-            <div
-              className={"flip-container " + extraClass}
-              onClick={() => flipCard(uniqueId)}
-            >
-              <div className="flipper" style={moverObject}>
-                <CardFace
-                  id={uniqueId}
-                  side="front"
-                  onMouseDown={this.props.mouseDown.bind(null, uniqueId, [
-                    x,
-                    y
-                  ])}
-                />
-                <CardFace id={uniqueId} side="back" />
+            <div style={moverObject}>
+              <div
+                className={"flip-container " + extraClass}
+                onClick={() => flipCard(uniqueId)}
+              >
+                <div className="flipper">
+                  <CardFace
+                    id={uniqueId}
+                    side="front"
+                    onMouseDown={this.props.mouseDown.bind(
+                      null,
+                      uniqueId,
+                      coords
+                    )}
+                  />
+                  <CardFace
+                    id={uniqueId}
+                    side="back"
+                    onMouseDown={this.props.mouseDown.bind(
+                      null,
+                      uniqueId,
+                      coords
+                    )}
+                  />
+                </div>
               </div>
             </div>
           );
