@@ -23,16 +23,16 @@ class Card extends Component {
     if (uniqueId === cards.lastPressed && cards.isPressed) {
       [x, y] = cards.mouseXY;
       style = {
-        translateX: x,
-        translateY: y,
-        scale: spring(1.05, { stiffness: 120, damping: 17 })
+        translateX: spring(x, { stiffness: 120, damping: 14 }),
+        translateY: spring(y, { stiffness: 120, damping: 14 }),
+        scale: spring(1.1, { stiffness: 120, damping: 17 })
       };
     } else {
-      y = layout[visualPosition];
+      y = 0; // layout[visualPosition];
       x = 0;
       style = {
-        translateX: x,
-        translateY: y,
+        translateX: spring(x, { stiffness: 120, damping: 14 }),
+        translateY: spring(y, { stiffness: 120, damping: 14 }),
         scale: spring(1, { stiffness: 180, damping: 10 })
       };
     }
@@ -40,14 +40,11 @@ class Card extends Component {
     return (
       <Motion key={uniqueId} style={style}>
         {({ translateX, translateY, scale }) => {
-          const moverObject =
-            cards.lastPressed === uniqueId && cards.isPressed
-              ? {
-                  WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
-                  transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
-                  zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
-                }
-              : {};
+          const moverObject = {
+            WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
+            transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
+            zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
+          };
           return (
             <div style={moverObject} onClick={event => event.stopPropagation()}>
               <div
