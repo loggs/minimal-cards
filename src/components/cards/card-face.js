@@ -18,7 +18,8 @@ class CardFace extends Component {
       toggleCardMode,
       edit_mode,
       flipped,
-      deleteCard
+      deleteCard,
+      style
     } = this.props;
 
     const is_front = side === "front";
@@ -44,7 +45,7 @@ class CardFace extends Component {
       );
 
     return (
-      <div className={side + isBeingEdited}>
+      <div className={side + isBeingEdited} style={style}>
         <div
           onClick={event => event.stopPropagation()}
           className="prevent-flip"

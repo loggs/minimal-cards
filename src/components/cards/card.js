@@ -23,7 +23,7 @@ class Card extends Component {
     if (uniqueId === cards.lastPressed && cards.isPressed) {
       [x, y] = cards.mouseXY;
       style = {
-        translateX: spring(x, { stiffness: 120, damping: 14 }),
+        translateX: 0, //spring(x, { stiffness: 120, damping: 14 }),
         translateY: spring(y, { stiffness: 120, damping: 14 }),
         scale: spring(1.1, { stiffness: 120, damping: 17 })
       };
@@ -43,8 +43,14 @@ class Card extends Component {
           const moverObject = {
             WebkitTransform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
             transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
-            zIndex: uniqueId === cards.lastPressed ? 99 : visualPosition
+            zIndex: uniqueId === cards.lastPressed ? 99 : 1
           };
+
+          const backgroundColor =
+            uniqueId === cards.lastPressed && cards.isPressed
+              ? "white"
+              : "inherit";
+
           return (
             <div style={moverObject} onClick={event => event.stopPropagation()}>
               <div
@@ -55,6 +61,7 @@ class Card extends Component {
                   <CardFace
                     id={uniqueId}
                     side="front"
+                    style={{ backgroundColor: backgroundColor }}
                     onMouseDown={this.props.mouseDown.bind(
                       null,
                       uniqueId,
@@ -64,6 +71,7 @@ class Card extends Component {
                   <CardFace
                     id={uniqueId}
                     side="back"
+                    style={{ backgroundColor: backgroundColor }}
                     onMouseDown={this.props.mouseDown.bind(
                       null,
                       uniqueId,
