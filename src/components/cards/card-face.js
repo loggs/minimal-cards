@@ -19,7 +19,8 @@ class CardFace extends Component {
       edit_mode,
       flipped,
       deleteCard,
-      style
+      style,
+      deleting
     } = this.props;
 
     const is_front = side === "front";
@@ -30,6 +31,7 @@ class CardFace extends Component {
     /* Differentiate edit modes */
 
     const isBeingEdited = edit_mode ? " editing" : "";
+    const isBeingDeleted = deleting ? " deleting" : "";
 
     /* Get the content depending on whether the card is flipped or not */
     const text_or_input =
@@ -45,7 +47,7 @@ class CardFace extends Component {
       );
 
     return (
-      <div className={side + isBeingEdited} style={style}>
+      <div className={side + isBeingEdited + isBeingDeleted} style={style}>
         <div
           onClick={event => event.stopPropagation()}
           className="prevent-flip"
@@ -89,7 +91,8 @@ function mapStateToProps(state, props) {
     front_text: card.front_text,
     edit_mode: card.edit_mode,
     back_text: card.back_text,
-    flipped: card.flipped
+    flipped: card.flipped,
+    deleting: card.deleting
   };
 }
 

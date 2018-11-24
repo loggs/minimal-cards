@@ -25,7 +25,8 @@ const defaultCardValues = {
   flipped: false,
   front_text: "Front",
   back_text: "Back",
-  edit_mode: false
+  edit_mode: false,
+  deleting: false
 };
 
 // const width = 400;
@@ -75,10 +76,24 @@ export default function(state = defaultCardsState, action) {
       return state;
 
     case DELETE_CARD:
+      const id_r = action.payload;
+      const card_object_d = state.data[id_r];
       return {
         ...state,
-        order: state.order.filter(card => card !== action.payload)
+        data: {
+          ...state.data,
+          [id_r]: {
+            ...card_object_d,
+            deleting: !card_object_d.deleting,
+            front_text: "",
+            back_text: ""
+          }
+        }
       };
+    //return {
+    // ...state,
+    // order: state.order.filter(card => card !== action.payload)
+    //};
 
     case MOUSE_MOVE:
       const {
