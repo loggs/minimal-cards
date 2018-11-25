@@ -19,7 +19,8 @@ class Card extends Component {
       return height * row;
     });
 
-    const extraClass = data.flipped ? "hover" : "";
+    const isFlipped = data.flipped ? " hover" : "";
+    const isDeleting = data.deleting ? " deleting" : "";
     const visualPosition = cards.order.indexOf(uniqueId);
     if (uniqueId === cards.lastPressed && cards.isPressed) {
       [x, y] = cards.mouseXY;
@@ -55,7 +56,7 @@ class Card extends Component {
           return (
             <div style={moverObject} onClick={event => event.stopPropagation()}>
               <div
-                className={"flip-container " + extraClass}
+                className={"flip-container" + isFlipped + isDeleting}
                 onClick={() => flipCard(uniqueId)}
               >
                 <div className="flipper">
