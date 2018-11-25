@@ -6,6 +6,7 @@ import { Motion, spring } from "react-motion";
 
 class Card extends Component {
   render() {
+    // TODO: Move logic to the reducer
     let x;
     let y;
     let style;
