@@ -10,7 +10,7 @@ import {
   MOUSE_DOWN
 } from "../actions/index";
 import uuid from "../helpers/uuid";
-// import { clamp, reinsert } from "../helpers/draggable";
+import { clamp, reinsert } from "../helpers/draggable";
 
 const defaultCardsState = {
   data: {},
@@ -21,16 +21,19 @@ const defaultCardsState = {
   isPressed: false
 };
 
-const defaultCardValues = {
-  flipped: false,
-  front_text: "Front",
-  back_text: "Back",
-  edit_mode: false,
-  deleting: false
+const defaultCardValues = id => {
+  return {
+    flipped: false,
+    front_text: id,
+    back_text: "Back",
+    edit_mode: false,
+    deleting: false
+  };
 };
 
-// const width = 400;
-// const height = 295;
+const WIDTH = 400;
+const HEIGHT = 295;
+
 export default function(state = defaultCardsState, action) {
   switch (action.type) {
     case ADD_CARD:
@@ -70,7 +73,7 @@ const add_card = state => {
   const unique_key = uuid();
   return {
     ...state,
-    data: { ...state.data, [unique_key]: defaultCardValues },
+    data: { ...state.data, [unique_key]: defaultCardValues(unique_key) },
     order: [...state.order, unique_key]
   };
 };
@@ -132,23 +135,18 @@ const delete_card = (state, payload) => {
 const mouse_move = (state, payload) => {
   const {
     order,
-    // lastPressed,
+    lastPressed,
     isPressed,
     mouseCardDelta: [dx, dy]
   } = state;
   const { pageX, pageY } = payload;
   const mouseXY = [pageX - dx, pageY - dy];
   if (isPressed) {
-    //const count = order.length;
-    //const col = clamp(Math.floor(mouseXY[0] / width), 0, 2);
-    //const row = clamp(
-    //  Math.floor(mouseXY[1] / height),
-    //  0,
-    //  Math.floor(count / 3)
-    //);
-    //const index = row + col;
-    //const newOrder = reinsert(order, order.indexOf(lastPressed), index);
-    return { ...state, mouseXY: mouseXY };
+    console.log(Math.floor((Math.abs(mouseXY[1]) + 400) / HEIGHT));
+    const new_index = Math.floor((Math.abs(mouseXY[1]) + 200) / HEIGHT);
+    const index = clamp(new_index, 0, order.length);
+    const newOrder = reinsert(order, order.indexOf(lastPressed), index);
+    return { ...state, mouseXY: mouseXY, order: newOrder };
   } else {
     return { ...state, mouseXY: mouseXY };
   }

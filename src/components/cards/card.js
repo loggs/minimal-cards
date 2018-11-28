@@ -30,7 +30,7 @@ class Card extends Component {
         scale: spring(1.1, { stiffness: 120, damping: 17 })
       };
     } else {
-      y = 0; // layout[visualPosition];
+      y = layout[visualPosition];
       x = 0;
       style = {
         translateX: spring(x, { stiffness: 120, damping: 14 }),
